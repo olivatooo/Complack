@@ -1,0 +1,7 @@
+input i
+if 0 1 goto 4
+output 0 i
+exit
+output 0 i
+push 1
+goto 4

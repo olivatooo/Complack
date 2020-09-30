@@ -1,0 +1,19 @@
+push 72
+push 101
+push 108
+push 108
+push 111
+push 44
+push 32
+push 87
+push 111
+push 114
+push 108
+push 100
+push 33
+push 0
+output 0 a
+pop 0
+if 0 0 goto 18
+goto 14
+exit

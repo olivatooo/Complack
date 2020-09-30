@@ -1,0 +1,7 @@
+input a
+push 0
+output 0 a
+pop 0
+if 0 0 goto 6
+goto 2
+exit

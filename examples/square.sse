@@ -1,0 +1,9 @@
+#Calculates the square of whatever
+input i
+push 0
+push 0
+increase 2 $0
+increase 1 1
+if 1 $0 goto 8
+goto 4
+output 2 i
