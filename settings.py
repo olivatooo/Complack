@@ -5,8 +5,12 @@ def init():
     global finished
     global debug
     global point
+    global sub
+    global callstack
     stack = []
+    sub = {}
+    callstack = []
     finished = False
-    debug = False
+    debug = True 
     point = 0
 

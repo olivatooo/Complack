@@ -1,5 +1,6 @@
 from constants import *
 import settings as s
+import subroutines as subs
 from handleFunctions import *
 import sys
 
@@ -14,6 +15,9 @@ if __name__ == "__main__":
         exit(1)
 
     s.init()
+    # TODO: Move this to settings
+    code = subs.cleanCode(code)
+    subs.mapCode(code)
     while not s.finished:
         l = code[s.point].strip()
         line = l.split()
@@ -48,10 +52,17 @@ if __name__ == "__main__":
         elif ins == cSmaller:
             handleIf(line, cSmaller)
         
+        elif ins == iGoSub:
+            handleSubroutine(line[1])
+        elif ins == subEnd:
+            handleEndSubroutine()
         elif ins == iGoto:
             s.point = int(line[1])
         elif ins == iExit:
             s.finished = True
+        elif ins == subInit:
+            s.callstack.append("#")
+            s.point += 1
         if l==code[-1] and ins != iGoto:
             s.finished = True
 

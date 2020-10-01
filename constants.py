@@ -5,6 +5,7 @@ iPop = 'pop'
 iIncrease = 'increase'
 iSet = 'set'
 iGoto = 'goto'
+iGoSub = 'gosub' 
 iExit = 'exit'
 
 # Conditions
@@ -26,4 +27,10 @@ ePlace = 'while trying to'
 
 # Commentary
 commentary = '#'
+
+# scope
+subInit = 'sub'
+subEnd = 'end'
+
+lex = [iInput, iOutput, iPush, iPop, iIncrease, iSet, iGoto, iGoSub, iExit, cEqual, cNotEqual, cBigger, cSmaller, sPointer, typeAppend, typeInt, eLine, ePlace]
 

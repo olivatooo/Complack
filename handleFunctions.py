@@ -53,7 +53,6 @@ def handleIncrease(line):
             add = s.stack[int(line[2][1:])]
         else:
             add = int(line[2])
-            exit(1)
         
         s.stack[int(line[1])] = s.stack[int(line[1])] + add
         s.point += 1
@@ -108,4 +107,25 @@ def handleIf(line, typeOfCondition):
                 s.point += 1
     except IndexError:
         print("Invalid if/nif/bif/sif:", line, typeOfCondition)
+
+
+def handleSubroutine(subname):
+    s.callstack.append(s.point)
+    try:
+        s.point = s.sub[subname]
+    except KeyError:
+        print("Subroutine name does not exist")
+        exit(1)
+
+
+def handleEndSubroutine():
+    try:
+        sp = s.callstack.pop()
+        if sp != '#':
+            s.point = sp
+        else:
+            s.point += 1
+    except:
+        print("Calling 'end' without a subroutine")
+        exit(1)
 
