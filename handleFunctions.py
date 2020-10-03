@@ -57,7 +57,22 @@ def handleIncrease(line):
         s.stack[int(line[1])] = s.stack[int(line[1])] + add
         s.point += 1
     except IndexError:
-        print("Invalid INCREASE: ", line)
+        print("Invalid decrease at line", s.point)
+        exit(0)
+
+
+def handleDecrease(line): 
+    add = 0
+    try:
+        if line[2][0] == sPointer:
+            add = s.stack[int(line[2][1:])]
+        else:
+            add = int(line[2])
+        
+        s.stack[int(line[1])] = s.stack[int(line[1])] - add
+        s.point += 1
+    except IndexError:
+        print("Invalid decrease at line", s.point)
         exit(0)
 
 
@@ -71,7 +86,7 @@ def handleSet(line):
         s.stack[int(line[1])] = val
         s.point += 1
     except IndexError:
-        print("Invalid SET:", line)
+        print("Invalid set at line", s.point)
         exit(0)
 
 
@@ -84,29 +99,29 @@ def handleIf(line, typeOfCondition):
 
         if typeOfCondition == cEqual:
             if s.stack[int(line[1])] == check:
-                s.point = int(line[4])
+                handleGoto(line[4])
             else:
                 s.point += 1
 
         if typeOfCondition == cNotEqual:
             if s.stack[int(line[1])] != check:
-                s.point = int(line[4])
+                handleGoto(line[4])
             else:
                 s.point += 1
 
         if typeOfCondition == cBigger:
             if s.stack[int(line[1])] > check:
-                s.point = int(line[4])
+                handleGoto(line[4])
             else:
                 s.point += 1
 
         if typeOfCondition == cSmaller:
             if s.stack[int(line[1])] < check:
-                s.point = int(line[4])
+                handleGoto(line[4])
             else:
                 s.point += 1
     except IndexError:
-        print("Invalid if/nif/bif/sif:", line, typeOfCondition)
+        print("Invalid if/nif/bif/sif:", line, typeOfCondition, "at line", s.point)
 
 
 def handleGoto(goto):

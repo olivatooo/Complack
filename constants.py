@@ -2,7 +2,8 @@ iInput = 'input'
 iOutput = 'output'
 iPush = 'push'
 iPop = 'pop'
-iIncrease = 'increase'
+iIncrease = 'inc'
+iDecrease = 'dec'
 iSet = 'set'
 iGoto = 'goto'
 iGoSub = 'gosub' 
@@ -20,7 +21,7 @@ cSmaller = 'sif'
 sPointer = '$'
 
 # TypeOfInput
-typeChar = 'a'
+typeChar = 'c'
 typeInt = 'i'
 
 # Errors

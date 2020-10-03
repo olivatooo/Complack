@@ -1,1 +1,21 @@
+use potato
+  push 112 
+  push 111 
+  push 116 
+  push 97 
+  push 116 
+  push 111
+
+use somethingElse
+  push 10
+  push 20
+  push 30
+
+use potato
+  # Prints stack potato as char
+  prints c
+
+use somethingElse
+  # Prints stack somethingElse as integer
+  prints i
 

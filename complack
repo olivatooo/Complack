@@ -45,6 +45,8 @@ if __name__ == "__main__":
                 handleStackPop(line[1])
             elif ins == iIncrease:
                 handleIncrease(line)
+            elif ins == iDecrease:
+                handleDecrease(line)
             elif ins == iSet:
                 handleSet(line)
             elif ins == iPrintStack:
@@ -75,6 +77,8 @@ if __name__ == "__main__":
 
             elif ins == iExit:
                 s.point = len(code)
+            elif ins == label:
+                s.point += 1  
             else:
                 print("Instruction", ins, "not found", "at line", s.point)
                 exit(1)

@@ -1,13 +1,23 @@
-push 0
-push 1
-push 0
-push 0
-push 10
-set 3 $0
-increase 3 $1
-set 2 $3
-set 0 $1
-set 1 $2
-output 3 i
-output 4 a
-goto 5
+use fib
+  push 0
+  push 1
+  push 0
+  push 0
+  push 10
+use howManyTimes
+  input i
+
+label increment
+use fib
+    set 3 $0
+    inc 3 $1
+    set 2 $3
+    set 0 $1
+    set 1 $2
+    output 3 i
+    output 4 c
+use howManyTimes
+  dec 0 1
+  if 0 0 goto finish
+  goto increment
+label finish
