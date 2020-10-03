@@ -2,7 +2,7 @@
 ## A simple complex stack based language
 
 
-Language based on  [simplack](https://esolangs.org/wiki/Simplack), you can see complack in esolang wiki [here](https://esolangs.org/wiki/Complack).
+Language based on  [simplack](https://esolangs.org/wiki/Simplack), you can see [complack in esolang wiki here](https://esolangs.org/wiki/Complack).
 
 
 You can run some examples by cloning this repo:
