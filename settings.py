@@ -16,7 +16,7 @@ def init():
     sub = {}
     gotoMap = {}
     callstack = []
-    debug = True
+    debug = False
     point = 0
 
 
