@@ -7,6 +7,8 @@ iSet = 'set'
 iGoto = 'goto'
 iGoSub = 'gosub' 
 iExit = 'exit'
+iPrintStack = 'prints'
+iSwitchStack = 'use'
 
 # Conditions
 cEqual = 'if'
@@ -18,7 +20,7 @@ cSmaller = 'sif'
 sPointer = '$'
 
 # TypeOfInput
-typeAppend = 'a'
+typeChar = 'a'
 typeInt = 'i'
 
 # Errors
@@ -29,8 +31,8 @@ ePlace = 'while trying to'
 commentary = '#'
 
 # scope
+label = 'label'
 subInit = 'sub'
 subEnd = 'end'
 
-lex = [iInput, iOutput, iPush, iPop, iIncrease, iSet, iGoto, iGoSub, iExit, cEqual, cNotEqual, cBigger, cSmaller, sPointer, typeAppend, typeInt, eLine, ePlace]
 

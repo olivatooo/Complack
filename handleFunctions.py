@@ -3,7 +3,7 @@ from constants import *
 
 def handleInput(typeOfInput):
     # Receives a string
-    if typeOfInput == typeAppend:
+    if typeOfInput == typeChar:
         inp = input('>>')
         for i in inp:
             try:
@@ -24,7 +24,7 @@ def handleInput(typeOfInput):
 
 def handleOutput(stackPointer, typeOfOutput):
     item = s.stack[int(stackPointer)]
-    if typeOfOutput == typeAppend:
+    if typeOfOutput == typeChar:
         print(chr(item),end='')
     elif typeOfOutput == typeInt:
         print(item,end='')
@@ -109,23 +109,39 @@ def handleIf(line, typeOfCondition):
         print("Invalid if/nif/bif/sif:", line, typeOfCondition)
 
 
-def handleSubroutine(subname):
-    s.callstack.append(s.point)
+def handleGoto(goto):
     try:
-        s.point = s.sub[subname]
+        indexToJump = int(goto)
+        s.point = indexToJump
+        return
+    except ValueError:
+        pass
+    try:
+        indexToJump = s.gotoMap[goto]
+        s.point = indexToJump
+        return
     except KeyError:
-        print("Subroutine name does not exist")
+        print("Invalid goto index or label at line", s.point)
         exit(1)
 
 
-def handleEndSubroutine():
+def handlePrintStack(typeOfOutput):
+    for x in s.stack:
+        if typeOfOutput:
+            if typeOfOutput == typeInt:
+                print(x, end='')
+            else:
+                print(chr(x), end='')
+    print()
+    s.point += 1
+
+
+
+def handleStackSwitch(stack):
     try:
-        sp = s.callstack.pop()
-        if sp != '#':
-            s.point = sp
-        else:
-            s.point += 1
-    except:
-        print("Calling 'end' without a subroutine")
-        exit(1)
+        s.stack = s.dictOfStacks[stack]
+    except KeyError:
+        s.dictOfStacks[stack] = []
+        s.stack = s.dictOfStacks[stack]
+    s.point += 1
 

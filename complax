@@ -1,0 +1,84 @@
+#!/bin/python
+
+from constants import *
+import settings as s
+import subroutines as subroutine
+from handleFunctions import *
+import sys
+
+if __name__ == "__main__":
+    try:
+        file = open(sys.argv[1])
+        code = file.read()
+        code = code.splitlines()
+    except:
+        print("Usage:")
+        print("python", sys.argv[0], "complack.sse")
+        exit(1)
+
+    s.init()
+    code = s.cleanCode(code)
+    s.mapCode(code)
+    if s.debug == True:
+        for i in range(0, len(code)):
+            print(i, code[i])
+        print()
+
+    while s.point < len(code): 
+        l = code[s.point].strip()
+        line = l.split()
+        ins = line[0]
+        if s.debug == True:
+            print("Instruction:", l)
+            print("Pointer:", s.point)
+            print("Stack:", s.stack)
+        try:
+            if l[0] == commentary:
+                s.point += 1
+            elif ins == iInput:
+                handleInput(line[1])
+            elif ins == iOutput:
+                handleOutput(line[1], line[2])
+            elif ins == iPush:
+                handleStackPush(line[1])
+            elif ins == iPop:
+                handleStackPop(line[1])
+            elif ins == iIncrease:
+                handleIncrease(line)
+            elif ins == iSet:
+                handleSet(line)
+            elif ins == iPrintStack:
+                handlePrintStack(line[1])
+            elif ins == iGoto:
+                handleGoto(line[1])
+            elif ins == iSwitchStack:
+                handleStackSwitch(line[1])
+
+
+            # Conditional branching
+            elif ins == cEqual:
+                handleIf(line, cEqual)
+            elif ins == cNotEqual:
+                handleIf(line, cNotEqual)
+            elif ins == cBigger:
+                handleIf(line, cBigger)
+            elif ins == cSmaller:
+                handleIf(line, cSmaller)
+           
+            # Subroutines
+            elif ins == iGoSub:
+                subroutine.handleSubroutine(line[1])
+            elif ins == subInit:
+                subroutine.handleInitSubroutine(code)
+            elif ins == subEnd:
+                subroutine.handleEndSubroutine()
+
+            elif ins == iExit:
+                s.point = len(code)
+            else:
+                print("Instruction", ins, "not found", "at line", s.point)
+                exit(1)
+        except IndexError:
+           print("Incorrect use of instruction", ins , "at line", s.point)
+           exit(1)
+

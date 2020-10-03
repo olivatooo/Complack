@@ -1,0 +1,18 @@
+sub push_n_out
+  push 0
+  push 10
+  push 20
+end
+sub teste
+  pop 0
+  output 0 i  
+end
+
+gosub push_n_out
+goto fim
+gosub push_n_out
+gosub push_n_out
+label fim
+gosub teste
+gosub teste
+
